@@ -74,10 +74,16 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-soft"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_var(--accent-glow)] transition hover:bg-accent-soft hover:scale-[1.02]"
             >
               {locale === "fr" ? "Contactez-moi" : "Contact me"}
               <span aria-hidden>→</span>
+            </a>
+            <a
+              href="#work"
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold text-ink backdrop-blur transition hover:border-accent/40 hover:text-accent"
+            >
+              {locale === "fr" ? "Voir les projets" : "View projects"}
             </a>
             <a
               href={site.linkedin}

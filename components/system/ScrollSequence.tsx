@@ -16,16 +16,16 @@ export function ScrollSequence({ children }: { children: React.ReactNode }) {
     const triggers = sections.map((section) =>
       gsap.fromTo(
         section,
-        { opacity: 0.55, y: 36 },
+        { opacity: 0.82, y: 22 },
         {
           opacity: 1,
           y: 0,
-          ease: "power1.out",
+          ease: "power2.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 90%",
-            end: "top 48%",
-            scrub: 0.7,
+            start: "top 88%",
+            end: "top 52%",
+            scrub: 0.55,
           },
         }
       )

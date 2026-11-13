@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useLocale } from "next-intl";
-import { services, site } from "@/content/data";
+import { services } from "@/content/data";
+import { Reveal, RevealGroup, RevealItem } from "@/components/system/Reveal";
 
 export function WhatIDo() {
   const locale = useLocale() as "fr" | "en";
@@ -11,16 +11,16 @@ export function WhatIDo() {
     <section
       id="services"
       data-section="what-i-do"
-      className="relative flex min-h-screen snap-start items-center overflow-hidden px-6 py-28 md:px-16 md:pl-24 lg:px-24"
+      className="relative flex min-h-[80vh] snap-start items-center overflow-hidden px-6 py-28 md:px-16 md:pl-24 lg:px-24"
     >
       <div
         aria-hidden
         className="pointer-events-none absolute -right-10 top-1/3 h-80 w-80 rounded-full bg-accent/20 blur-[110px]"
       />
 
-      <div className="relative mx-auto grid w-full max-w-content items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="relative">
-          <h2 className="mb-6 font-extrabold uppercase leading-[0.9] tracking-tight">
+      <div className="relative mx-auto w-full max-w-content">
+        <Reveal>
+          <h2 className="mb-10 font-extrabold uppercase leading-[0.92] tracking-tight md:mb-14">
             {locale === "fr" ? (
               <>
                 <span className="block text-[clamp(2.2rem,6vw,4.8rem)] text-ink">CE QUE</span>
@@ -33,36 +33,25 @@ export function WhatIDo() {
               </>
             )}
           </h2>
-          <div className="relative mx-auto h-[320px] w-full max-w-md lg:h-[440px]">
-            <Image
-              src={site.avatarWork}
-              alt={locale === "fr" ? "Avatar Ilias au bureau" : "Ilias avatar at desk"}
-              fill
-              sizes="(max-width:1024px) 90vw, 420px"
-              className="object-contain object-bottom"
-            />
-          </div>
-        </div>
+        </Reveal>
 
-        <div className="relative border border-dashed border-[var(--line)] p-6 md:p-8">
-          <span aria-hidden className="absolute -left-px -top-px h-3 w-3 border-l border-t border-ink" />
-          <span aria-hidden className="absolute -right-px -top-px h-3 w-3 border-r border-t border-ink" />
-          <span aria-hidden className="absolute -bottom-px -left-px h-3 w-3 border-b border-l border-ink" />
-          <span aria-hidden className="absolute -bottom-px -right-px h-3 w-3 border-b border-r border-ink" />
-
-          {services.map((service, i) => (
-            <div
-              key={service.id}
-              className={i > 0 ? "mt-8 border-t border-dashed border-[var(--line)] pt-8" : ""}
-            >
-              <h3 className="text-2xl font-bold tracking-wide text-ink md:text-3xl">{service.title[locale]}</h3>
-              <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted">{service.subtitle[locale]}</p>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-2 md:text-[15px]">
-                {service.body[locale]}
-              </p>
-            </div>
+        <RevealGroup className="grid gap-6 md:grid-cols-2 md:gap-8">
+          {services.map((service) => (
+            <RevealItem key={service.id}>
+              <div className="group relative h-full overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-6 transition-all duration-500 hover:border-accent/35 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] md:p-8">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-accent/10 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
+                />
+                <h3 className="text-2xl font-bold tracking-wide text-ink md:text-3xl">{service.title[locale]}</h3>
+                <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted">{service.subtitle[locale]}</p>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-2 md:text-[15px]">
+                  {service.body[locale]}
+                </p>
+              </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

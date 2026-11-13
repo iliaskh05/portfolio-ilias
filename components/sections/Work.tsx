@@ -77,7 +77,7 @@ function ProjectCard({
       className={
         mobile
           ? "group relative flex w-full flex-col border-b border-[var(--line)] py-8 last:border-b-0"
-          : "group relative flex h-[min(78vh,720px)] w-[min(90vw,560px)] shrink-0 flex-col border-r border-[var(--line)] px-8 py-6 md:w-[600px] md:px-12"
+          : "group relative flex h-[min(78vh,720px)] w-[min(88vw,540px)] shrink-0 flex-col border-r border-[var(--line)] px-8 py-6 md:w-[560px] md:px-10"
       }
     >
       <div className="mb-4 flex items-start justify-between gap-4">
@@ -253,8 +253,8 @@ export function Work() {
 
       {/* Desktop horizontal work */}
       <div className="relative hidden min-h-screen md:block">
-        <div className="pointer-events-none absolute left-6 top-16 z-20 max-w-[min(42vw,420px)] rounded-2xl bg-[var(--bg)]/80 px-4 py-3 backdrop-blur-md md:left-20 lg:left-24">
-          <h2 className="text-[clamp(2rem,4vw,3.6rem)] font-semibold tracking-tight text-ink">
+        <div className="pointer-events-none absolute left-16 top-20 z-20 lg:left-20">
+          <h2 className="text-[clamp(1.75rem,3.2vw,2.75rem)] font-semibold tracking-tight text-ink">
             {locale === "fr" ? (
               <>
                 Mes <span className="text-gradient-lilac">projets</span>
@@ -265,18 +265,18 @@ export function Work() {
               </>
             )}
           </h2>
-          <p className="mt-2 max-w-sm text-sm text-muted">
+          <p className="mt-1.5 max-w-xs text-sm text-muted">
             {locale === "fr"
-              ? "Glissez horizontalement — chaque projet en détail."
+              ? "Scroll horizontal — chaque projet en détail."
               : "Scroll sideways — every project in detail."}
           </p>
         </div>
 
         <div
           ref={trackRef}
-          className="flex h-screen w-max items-center gap-0 pt-36 will-change-transform md:pt-32"
+          className="flex h-screen w-max items-center gap-0 pt-28 will-change-transform"
         >
-          <div className="w-[10vw] shrink-0 md:w-[14vw]" aria-hidden />
+          <div className="w-[8vw] shrink-0 md:w-[10vw]" aria-hidden />
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -286,7 +286,7 @@ export function Work() {
               visitLabel={visitLabel}
             />
           ))}
-          <div className="w-[18vw] shrink-0" aria-hidden />
+          <div className="w-[14vw] shrink-0" aria-hidden />
         </div>
       </div>
     </section>

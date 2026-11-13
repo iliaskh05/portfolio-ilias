@@ -2,6 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { sailing } from "@/content/data";
+import { Reveal, RevealGroup, RevealItem } from "@/components/system/Reveal";
 
 export function Sailing() {
   const locale = useLocale() as "fr" | "en";
@@ -22,43 +23,44 @@ export function Sailing() {
       />
 
       <div className="relative mx-auto w-full max-w-content">
-        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-accent-soft">
-          {sailing.label[locale]}
-        </p>
-        <h2 className="max-w-3xl text-[clamp(1.85rem,4.5vw,3.25rem)] font-extrabold leading-[1.08] tracking-tight text-ink">
-          {sailing.title[locale]}
-        </h2>
-        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted md:text-[15px]">{sailing.body[locale]}</p>
+        <Reveal>
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-accent-soft">
+            {sailing.label[locale]}
+          </p>
+          <h2 className="max-w-3xl text-[clamp(1.85rem,4.5vw,3.25rem)] font-extrabold leading-[1.08] tracking-tight text-ink">
+            {sailing.title[locale]}
+          </h2>
+          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted md:text-[15px]">{sailing.body[locale]}</p>
+        </Reveal>
 
-        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {sailing.proofs.map((proof) => (
-            <div
-              key={proof.title.en}
-              className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-4 backdrop-blur"
-            >
-              <p className="text-sm font-semibold text-ink">{proof.title[locale]}</p>
-              <p className="mt-1.5 text-xs leading-relaxed text-muted">{proof.detail[locale]}</p>
-            </div>
+            <RevealItem key={proof.title.en}>
+              <div className="h-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-4 backdrop-blur transition-colors duration-300 hover:border-accent/35">
+                <p className="text-sm font-semibold text-ink">{proof.title[locale]}</p>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted">{proof.detail[locale]}</p>
+              </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
         <div className="mt-12">
-          <h3 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-accent-soft">
-            {locale === "fr" ? "Ce que ça apporte au métier" : "What it brings to the work"}
-          </h3>
-          <div className="grid gap-4 md:grid-cols-3">
+          <Reveal>
+            <h3 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-accent-soft">
+              {locale === "fr" ? "Ce que ça apporte au métier" : "What it brings to the work"}
+            </h3>
+          </Reveal>
+          <RevealGroup className="grid gap-4 md:grid-cols-3">
             {sailing.transfers.map((item) => (
-              <div
-                key={item.title.en}
-                className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-5 py-5 backdrop-blur"
-              >
-                <p className="text-sm font-semibold text-accent">{item.title[locale]}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{item.detail[locale]}</p>
-              </div>
+              <RevealItem key={item.title.en}>
+                <div className="h-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-5 py-5 backdrop-blur transition-colors duration-300 hover:border-accent/35">
+                  <p className="text-sm font-semibold text-accent">{item.title[locale]}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{item.detail[locale]}</p>
+                </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </div>
-
       </div>
     </section>
   );

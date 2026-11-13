@@ -30,6 +30,7 @@ export function Header() {
   const params = useParams();
   const locale = resolveLocale(params?.locale);
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const links = navByLocale[locale];
 
   useEffect(() => {
@@ -39,38 +40,44 @@ export function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="flex h-14 items-center justify-between px-5 md:h-[72px] md:px-10 lg:px-12">
+      <div
+        className={`flex h-14 items-center justify-between gap-4 px-5 transition-[background,border-color,backdrop-filter] duration-300 md:h-[72px] md:px-10 lg:px-12 ${
+          scrolled
+            ? "border-b border-[var(--line)] bg-[var(--bg)]/80 backdrop-blur-xl"
+            : "border-b border-transparent bg-transparent"
+        }`}
+      >
         <a
           href="#top"
           onClick={() => setOpen(false)}
-          className="relative z-[60] text-[16px] font-bold tracking-tight text-ink md:text-[19px]"
+          className="relative z-[60] shrink-0 text-[17px] font-extrabold tracking-[0.08em] text-ink md:text-[19px]"
         >
           {site.monogram}
         </a>
 
-        <a
-          href={`mailto:${site.email}`}
-          className="absolute left-1/2 hidden -translate-x-1/2 whitespace-nowrap text-[13px] font-medium text-ink/90 transition-colors hover:text-accent xl:block"
-        >
-          {site.email}
-        </a>
-
-        <div className="hidden items-center gap-5 md:flex">
-          <nav className="flex items-center gap-7">
+        <div className="hidden min-w-0 flex-1 items-center justify-end gap-4 md:flex lg:gap-6">
+          <nav className="flex items-center gap-5 lg:gap-7">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[12px] font-semibold uppercase tracking-[0.14em] text-ink transition-opacity hover:opacity-55"
+                className="whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.14em] text-ink transition-opacity hover:opacity-55 lg:text-[12px]"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] p-1 backdrop-blur">
+          <div className="flex shrink-0 items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] p-1 backdrop-blur">
             <a
               href="/en"
               hrefLang="en"
@@ -145,7 +152,7 @@ export function Header() {
 
       <div
         className={`fixed inset-0 z-50 bg-[var(--bg)]/95 px-6 pb-10 pt-20 transition-[opacity,visibility] duration-300 md:hidden ${
-          open ? "visible opacity-100" : "invisible opacity-0"
+          open ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"
         }`}
       >
         <nav className="flex h-full flex-col justify-between">

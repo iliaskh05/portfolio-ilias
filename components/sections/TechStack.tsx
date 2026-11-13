@@ -6,6 +6,7 @@ import { useLocale } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { competencies, type Competency } from "@/content/data";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/system/Reveal";
 
 function BrandLogo({
   skill,
@@ -91,7 +92,7 @@ export function TechStack() {
         className="pointer-events-none absolute left-1/2 top-[28%] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-accent/18 blur-[140px]"
       />
 
-      <div className="relative mx-auto mb-8 w-full max-w-content text-center md:mb-10">
+      <Reveal className="relative mx-auto mb-8 w-full max-w-content text-center md:mb-10">
         <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-accent-soft">
           {locale === "fr" ? "Compétences" : "Skills"}
         </p>
@@ -103,7 +104,7 @@ export function TechStack() {
             ? "Les technologies que j’utilise vraiment — Full-Stack, data, IA santé, automation et design."
             : "Technologies I actually ship with — Full-Stack, data, health AI, automation and design."}
         </p>
-      </div>
+      </Reveal>
 
       <div className="relative mx-auto w-full max-w-content">
         <div className="relative mx-auto h-[320px] w-full max-w-3xl overflow-visible sm:h-[360px] md:h-[400px]">

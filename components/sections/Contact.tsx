@@ -2,6 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { bio, competencies, site } from "@/content/data";
+import { Reveal, RevealGroup, RevealItem } from "@/components/system/Reveal";
 
 const quickLinks = {
   fr: [
@@ -54,7 +55,7 @@ export function Contact() {
       />
 
       <div className="relative mx-auto w-full max-w-content">
-        <div className="mx-auto max-w-3xl text-center">
+        <Reveal className="mx-auto max-w-3xl text-center">
           <h2 className="text-[clamp(2.4rem,7vw,4.8rem)] font-extrabold leading-[1.05] tracking-tight">
             <span className="text-ink">{locale === "fr" ? "Prêt à" : "Ready to"} </span>
             <span className="text-accent">{locale === "fr" ? "Collaborer ?" : "Collaborate?"}</span>
@@ -68,7 +69,7 @@ export function Contact() {
           <div className="mt-8 flex flex-col items-center justify-center gap-5 sm:flex-row sm:flex-wrap">
             <a
               href={`mailto:${site.email}`}
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-white shadow-[0_12px_40px_var(--accent-glow)] transition hover:bg-accent-soft"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-white shadow-[0_12px_40px_var(--accent-glow)] transition hover:bg-accent-soft hover:scale-[1.02]"
             >
               {site.email}
               <span aria-hidden>↗</span>
@@ -88,11 +89,11 @@ export function Contact() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
 
         <div className="mt-20 border-t border-[var(--line)] pt-12 md:mt-24 md:pt-14">
-          <div className="grid gap-10 md:grid-cols-[1.3fr_0.85fr_0.95fr] md:gap-8">
-            <div>
+          <RevealGroup className="grid gap-10 md:grid-cols-[1.3fr_0.85fr_0.95fr] md:gap-8">
+            <RevealItem>
               <p className="text-xl font-bold tracking-tight">
                 <span className="text-ink">{site.firstName} </span>
                 <span className="text-accent">{site.lastName}</span>
@@ -132,9 +133,9 @@ export function Contact() {
                   </svg>
                 </a>
               </div>
-            </div>
+            </RevealItem>
 
-            <div>
+            <RevealItem>
               <p className="text-sm font-semibold text-ink">
                 {locale === "fr" ? "Liens rapides" : "Quick links"}
               </p>
@@ -147,9 +148,9 @@ export function Contact() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </RevealItem>
 
-            <div>
+            <RevealItem>
               <p className="text-sm font-semibold text-ink">
                 {locale === "fr" ? "Compétences" : "Skills"}
               </p>
@@ -160,8 +161,8 @@ export function Contact() {
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
+            </RevealItem>
+          </RevealGroup>
 
           <p className="mt-12 text-xs text-muted md:mt-14">
             © {year} {site.name}. {locale === "fr" ? "Tous droits réservés." : "All rights reserved."}

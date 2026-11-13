@@ -49,11 +49,16 @@ html.lenis body {
   scroll-behavior: auto !important;
 }
 
+html {
+  background: var(--bg);
+}
+
 body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  min-height: 100%;
   transition: background-color 0.35s ease, color 0.35s ease;
 }
 
