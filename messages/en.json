@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "about": "About",
+    "caps": "Headings",
+    "projects": "Projects",
+    "skills": "Skills",
+    "sailing": "Sailing",
+    "contact": "Contact",
+    "cta": "Next heading"
+  },
+  "hero": {
+    "eyebrow": "Software · Full-Stack · Health AI",
+    "line": "Build useful systems — with the precision of a held heading.",
+    "ctaPrimary": "View projects",
+    "ctaSecondary": "Contact me",
+    "scroll": "Scroll the heading"
+  },
+  "about": {
+    "label": "About",
+    "title": "A digital engineer wired for impact.",
+    "portraitAlt": "Ilias Kharbouch, Morocco ILCA 7 champion, medal in hand"
+  },
+  "caps": {
+    "label": "Navigation",
+    "title": "Headings held.",
+    "status": {
+      "cap-atteint": "Heading reached",
+      "en-cap": "On course",
+      "cap-suivant": "Next heading"
+    }
+  },
+  "projects": {
+    "label": "Projects",
+    "title": "Shipments & case studies.",
+    "visit": "Visit",
+    "status": {
+      "cap-atteint": "Heading reached",
+      "en-cap": "On course"
+    }
+  },
+  "skills": {
+    "label": "Skills",
+    "title": "Stack & craft."
+  },
+  "sailing": {
+    "label": "Sailing",
+    "title": "Same discipline. Different element."
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Let's chart the next heading.",
+    "subtitle": "A project, a collab, a conversation — write in.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending…",
+    "success": "Message received. Heading logged.",
+    "error": "Send failed. Retry or email directly.",
+    "or": "or"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "built": "Built with Next.js · GSAP · R3F"
+  },
+  "preloader": {
+    "loading": "Loading heading"
+  }
+}

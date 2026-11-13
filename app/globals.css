@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f4f5f7;
+  --bg-elevated: #ffffff;
+  --ink: #111118;
+  --ink-soft: #2a2a35;
+  --muted: #6b6b78;
+  --muted-2: #4a4a58;
+  --line: rgba(17, 17, 24, 0.12);
+  --accent: #7c3aed;
+  --accent-soft: #8b5cf6;
+  --accent-deep: #5b21b6;
+  --accent-glow: rgba(124, 58, 237, 0.28);
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: #ffffff;
+  --photo-fade: rgba(244, 245, 247, 0.92);
+}
+
+.dark {
+  --bg: #050508;
+  --bg-elevated: #0c0c12;
+  --ink: #ffffff;
+  --ink-soft: #e4e4ea;
+  --muted: #8a8a96;
+  --muted-2: #b0b0ba;
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #c084fc;
+  --accent-soft: #d8b4fe;
+  --accent-deep: #a855f7;
+  --accent-glow: rgba(192, 132, 252, 0.45);
+  --surface: rgba(12, 12, 18, 0.72);
+  --surface-strong: #101018;
+  --photo-fade: rgba(5, 5, 8, 0.92);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.scroll-sequence {
+  scroll-snap-type: y proximity;
+}
+
+.scroll-sequence > [data-section] {
+  scroll-snap-align: start;
+}
+
+::selection {
+  background: rgba(192, 132, 252, 0.35);
+  color: #fff;
+}
+
+@layer components {
+  .skill-key {
+    transform-style: preserve-3d;
+  }
+
+  .hero-frame {
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent),
+      0 30px 80px rgba(0, 0, 0, 0.28),
+      0 0 60px var(--accent-glow);
+  }
+
+  .floating-tag {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    color: var(--accent-soft);
+  }
+}
+
+@layer utilities {
+  .text-gradient-lilac {
+    background: linear-gradient(180deg, var(--ink) 15%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glow-lilac {
+    text-shadow: 0 0 28px var(--accent-glow), 0 0 60px var(--accent-glow);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
