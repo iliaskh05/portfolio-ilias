@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale } from "next-intl";
 import { sailing } from "@/content/data";
 import { Reveal, RevealGroup, RevealItem } from "@/components/system/Reveal";
@@ -23,17 +24,59 @@ export function Sailing() {
       />
 
       <div className="relative mx-auto w-full max-w-content">
-        <Reveal>
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-accent-soft">
-            {sailing.label[locale]}
-          </p>
-          <h2 className="max-w-3xl text-[clamp(1.85rem,4.5vw,3.25rem)] font-extrabold leading-[1.08] tracking-tight text-ink">
-            {sailing.title[locale]}
-          </h2>
-          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted md:text-[15px]">{sailing.body[locale]}</p>
-        </Reveal>
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 xl:gap-16">
+          <Reveal>
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-accent-soft">
+              {sailing.label[locale]}
+            </p>
+            <h2 className="max-w-xl text-[clamp(1.85rem,4.5vw,3.25rem)] font-extrabold leading-[1.08] tracking-tight text-ink">
+              {sailing.title[locale]}
+            </h2>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted md:text-[15px]">{sailing.body[locale]}</p>
+          </Reveal>
 
-        <RevealGroup className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal delay={0.06} className="relative mx-auto w-full max-w-[540px] lg:mx-0 lg:max-w-none">
+            <div className="sailing-photo relative aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] md:aspect-[5/4] md:rounded-[1.75rem]">
+              <Image
+                src={sailing.image}
+                alt={sailing.imageAlt[locale]}
+                fill
+                sizes="(max-width:1024px) 92vw, 540px"
+                className="object-cover object-[38%_40%] scale-[1.06]"
+                priority
+              />
+
+              {/* Edge fades — merge photo into page atmosphere */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background: `
+                    linear-gradient(to right, var(--bg) 0%, transparent 18%, transparent 78%, color-mix(in srgb, var(--bg) 55%, transparent) 100%),
+                    linear-gradient(to top, var(--bg) 0%, transparent 22%, transparent 82%, color-mix(in srgb, var(--bg) 35%, transparent) 100%),
+                    linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, transparent) 0%, transparent 42%)
+                  `,
+                }}
+              />
+
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 rounded-[inherit] border border-accent/25"
+              />
+
+              <span className="absolute bottom-4 left-4 z-10 rounded-full border border-white/20 bg-black/45 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md md:bottom-5 md:left-5">
+                {sailing.imageCaption[locale]}
+              </span>
+            </div>
+
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -bottom-6 -right-6 h-36 w-36 rounded-full bg-accent/25 blur-[70px] md:-bottom-8 md:-right-8"
+            />
+          </Reveal>
+        </div>
+
+        <RevealGroup className="mt-12 grid gap-3 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
           {sailing.proofs.map((proof) => (
             <RevealItem key={proof.title.en}>
               <div className="h-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-4 backdrop-blur transition-colors duration-300 hover:border-accent/35">

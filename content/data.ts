@@ -660,6 +660,15 @@ export const sailing = {
     fr: "Athlète ILCA 7 et représentant voile auprès du CNOM. Onze ans de voile m’ont appris à lire un contexte flou, trancher vite et tenir un cap long — exactement le mode d’emploi pour livrer des produits digitaux et de l’IA en santé sous contrainte.",
     en: "ILCA 7 athlete and sailing representative with the CNOM. Eleven years on the water taught me to read ambiguity, decide fast and hold a long heading — the same operating system I use to ship digital products and health AI under constraint.",
   },
+  image: "/images/ilias-sailing-race.jpg",
+  imageAlt: {
+    fr: "Ilias Kharbouch en régate ILCA 7 — focus et vitesse près de la marque",
+    en: "Ilias Kharbouch racing ILCA 7 — focus and speed near the mark",
+  },
+  imageCaption: {
+    fr: "ILCA 7 · Régate",
+    en: "ILCA 7 · Race day",
+  },
   proofs: [
     {
       title: { fr: "Champion du Maroc", en: "Morocco Champion" },
